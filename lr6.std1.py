@@ -75,14 +75,22 @@ for student_id, info in students.items():
     print(f"ID: {student_id} | {info['name']} | Курс: {info['course']} | "
           f"Середній бал: {sum(info['subjects'].values()) / len(info['subjects'])}")
 
-
+# --- Оцінка словника студентом №2 ---
+# Автор коментаря: Головчук Н.
+# Коментар: Структура словника цілком зрозуміла і зручна для роботи з невеликою групою студентів.
 #! --- Функція сортування студентів за середнім балом ---
 #! Код написала: Головчук Н.
 
+
+#? Обчисленя середнього балу
+def get_average(student_info):
+    return sum(student_info["subjects"].values()) / len(student_info["subjects"])
+
+#? Сортування
 def sort_students_by_average(students_dict, reverse=True):
     return sorted(
         students_dict.items(),
-        key=lambda item: sum(item[1]["subjects"].values()) / len(item[1]["subjects"]),
+        key=lambda item: get_average(item[1]),
         reverse=reverse
     )
 
@@ -90,9 +98,9 @@ print("\nСортування студентів за середнім бало�
 sorted_students = sort_students_by_average(students)
 
 for student_id, info in sorted_students:
-    avg = sum(info["subjects"].values()) / len(info["subjects"])
+    avg = get_average(info)
     print(f"ID: {student_id} | {info['name']} | Середній бал: {avg:.2f}")
 
 
-# Завдання для студента №3:
+#! Завдання для студента №3:
 # Реалізувати функцію пошуку студента за ПІБ (повністю або частково).
