@@ -74,3 +74,21 @@ print("\nПоточний список студентів:")
 for student_id, info in students.items():
     print(f"ID: {student_id} | {info['name']} | Курс: {info['course']} | "
           f"Середній бал: {sum(info['subjects'].values()) / len(info['subjects'])}")
+
+
+# --- Функція сортування студентів за середнім балом ---
+# Код написала: Головчук Н.
+
+def sort_students_by_average(students_dict, reverse=True):
+    return sorted(
+        students_dict.items(),
+        key=lambda item: sum(item[1]["subjects"].values()) / len(item[1]["subjects"]),
+        reverse=reverse
+    )
+
+print("\nСортування студентів за середнім балом (від найвищого):")
+sorted_students = sort_students_by_average(students)
+
+for student_id, info in sorted_students:
+    avg = sum(info["subjects"].values()) / len(info["subjects"])
+    print(f"ID: {student_id} | {info['name']} | Середній бал: {avg:.2f}")
