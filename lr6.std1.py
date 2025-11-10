@@ -76,8 +76,8 @@ for student_id, info in students.items():
           f"Середній бал: {sum(info['subjects'].values()) / len(info['subjects'])}")
 
 
-# --- Функція сортування студентів за середнім балом ---
-# Код написала: Головчук Н.
+#! --- Функція сортування студентів за середнім балом ---
+#! Код написала: Головчук Н.
 
 def sort_students_by_average(students_dict, reverse=True):
     return sorted(
@@ -92,3 +92,7 @@ sorted_students = sort_students_by_average(students)
 for student_id, info in sorted_students:
     avg = sum(info["subjects"].values()) / len(info["subjects"])
     print(f"ID: {student_id} | {info['name']} | Середній бал: {avg:.2f}")
+
+
+# Завдання для студента №3:
+# Реалізувати функцію пошуку студента за ПІБ (повністю або частково).
