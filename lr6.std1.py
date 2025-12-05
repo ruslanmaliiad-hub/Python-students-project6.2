@@ -125,7 +125,7 @@ def find_student_by_name(students_dict, search_query):
         student_name = info['name']
         
         if search_query in student_name.lower():
-            avg = sum(info['subjects'].values()) / len(info['subjects'])
+            avg = get_average(info)
             
             print(f"ID: {s_id} | {student_name} | Група: {info['group']} | Середній бал: {avg:.2f}")
             
@@ -169,8 +169,11 @@ def remove_student_by_id(students_dict, student_id):
                 continue
     else:
         print("Помилка. Студента з заданим ID не існує")
+
+# --- Перевірка роботи функції видалення ---
 remove_student_by_id(students, 1)
 
 # Завдання для студента №5: 
 # Реалізувати функцію редагування даних студента за його ID. Користувач має мати можливість обрати, що саме редагувати
+
 
