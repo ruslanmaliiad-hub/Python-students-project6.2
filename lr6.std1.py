@@ -103,4 +103,51 @@ for student_id, info in sorted_students:
 
 
 #! Завдання для студента №3:
+
 # Реалізувати функцію пошуку студента за ПІБ (повністю або частково).
+
+
+# --- Оцінка коду студентом №3 ---
+# Автор коментаря: Швачко Єгор
+# Коментар: Функція сортування реалізована професійно. Структура словника залишається зручною, змін не потребує.
+
+# --- Виконання завдання: Пошук студента за ПІБ ---
+# Автор функції: Швачко Єгор
+
+def find_student_by_name(students_dict, search_query):
+
+    print(f"\n--- Результати пошуку за запитом: '{search_query}' ---")
+    
+    found_count = 0
+    # Переводимо запит у нижній регістр для зручності (щоб 'петр' знайшло 'Петренко')
+    search_query = search_query.lower()
+
+    for s_id, info in students_dict.items():
+        student_name = info['name']
+        
+        # Перевіряємо, чи входить запит в ім'я (lower() робить пошук нечутливим до регістру)
+        if search_query in student_name.lower():
+            # Рахуємо середній бал для знайденого студента
+            avg = sum(info['subjects'].values()) / len(info['subjects'])
+            
+            print(f"ID: {s_id}")
+            print(f"ПІБ: {student_name}")
+            print(f"Група: {info['group']}")
+            print(f"Середній бал: {avg:.2f}")
+            print("-" * 20)
+            found_count += 1
+
+    if found_count == 0:
+        print("На жаль, студентів не знайдено.")
+    else:
+        print(f"Знайдено студентів: {found_count}")
+
+
+# --- Перевірка роботи пошуку ---
+find_student_by_name(students, "Петренко")  
+find_student_by_name(students, "ольга")    
+find_student_by_name(students, "Сидоренко") 
+
+# Завдання для студента №4:
+# Реалізувати функцію видалення студента зі словника за його ID.
+# Перед видаленням питати підтвердження (Так/Ні).
